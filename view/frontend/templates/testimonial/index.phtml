@@ -1,0 +1,42 @@
+<?php $testimonials = $block->getTestimonials() ?>
+	<form
+		id="form-testimonial"
+		action="<?php echo $block->getUrl( 'lg_testimonials/testimonial/save' ) ?>"
+		method="post">
+		<?php echo $block->getBlockHtml( 'formkey' ) ?>
+		<div class="field title required">
+			<label class="label" for="title"></label>
+			<div class="control">
+				<textarea
+					id="testimony"
+					name="testimony"
+					data-validate="{required: true}"
+					placeholder=" <?php echo __( 'Add you testimonial testimony here.' ) ?>"></textarea>
+			</div>
+		</div>
+		<button type="submit" class="action save primary">
+			<span><?php echo __( 'Submit Testimony' ) ?></span>
+		</button>
+	</form>
+	<script>
+		require([
+			'jquery',
+			'mage/mage'
+		], function ($) {
+			var dataForm = $('#form-testimonial');
+			dataForm.mage('validation', {});
+		});
+	</script>
+<?php if ( $testimonials->count() ): ?>
+	<table class="data-grid">
+		<?php foreach ( $testimonials as $testimonial ): ?>
+			<tr>
+				<td><?php echo $testimonial->getId() ?></td>
+				<td><?php echo $block->escapeHtml( $testimonial->getTestimony() ) ?>
+				</td>
+				<td><?php echo $testimonial->getCreatedAt() ?></td>
+				<td><?php echo $testimonial->getStatusAsLabel() ?></td>
+			</tr>
+		<?php endforeach; ?>
+	</table>
+<?php endif; ?>

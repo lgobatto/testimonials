@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="LG_Testimonials::testimonial" title="Testimonials" module="LG_Testimonials"
+             action="lg_testimonials/testimonial/index"
+             resource="LG_Testimonials::testimonial"/>
+    </menu>
+</config>
